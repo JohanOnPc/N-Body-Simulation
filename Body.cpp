@@ -29,3 +29,13 @@ Body Body::operator=(Body&& other) noexcept
 
 	return *this;
 }
+
+bool Body::operator==(const Body& Other) const
+{
+	return m_Name == Other.m_Name;
+}
+
+bool Body::operator!=(const Body& Other) const
+{
+	return m_Name != Other.m_Name;
+}

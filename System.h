@@ -15,7 +15,8 @@ public:
 	void AddPlanet(const Body& Planet);
 	void AddPLanet(Body&& Planet);
 	
-	void Step();
+	void Step(unsigned int Steps);
+	void PrintCenterOfMass();
 
 private:
 	std::vector<Body> m_Planets;

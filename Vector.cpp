@@ -221,6 +221,7 @@ void VectorD::Normalize()
 {
 	__m256d _squared = _mm256_mul_pd(_vec, _vec);
 	__m256d _sum = _mm256_hadd_pd(_squared, _squared);
+	_sum = _mm256_permute4x64_pd(_sum, 0x88);
 	_sum = _mm256_hadd_pd(_sum, _sum);
 	__m256d _invRoot = _mm256_invsqrt_pd(_sum);
 	_vec = _mm256_mul_pd(_vec, _invRoot);
@@ -236,6 +237,7 @@ double VectorD::DotProduct(const VectorD& other) const
 {
 	__m256d _mul = _mm256_mul_pd(_vec, other._vec);
 	__m256d _sum = _mm256_hadd_pd(_mul, _mul);
+	_sum = _mm256_permute4x64_pd(_sum, 0x88);
 	return _mm256_cvtsd_f64(_mm256_hadd_pd(_sum, _sum));
 }
 

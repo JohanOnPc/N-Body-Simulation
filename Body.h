@@ -10,11 +10,14 @@ public:
 	Body();
 	Body(Vector Position, Vector Velocity, double Mass, std::string Name);
 
-	Body(const Body& other) = default;
-	Body(Body&& other) noexcept;
+	Body(const Body& Other) = default;
+	Body(Body&& Other) noexcept;
 
-	Body& operator= (const Body& other) = default;
-	Body operator= (Body&& other) noexcept;
+	Body& operator= (const Body& Other) = default;
+	Body operator= (Body&& Other) noexcept;
+
+	bool operator== (const Body& Other) const;
+	bool operator!= (const Body& Other) const;
 
 	Vector m_Position;
 	Vector m_Velocity;
