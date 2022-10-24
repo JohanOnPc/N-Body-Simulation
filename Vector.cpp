@@ -223,7 +223,9 @@ void VectorD::Normalize()
 	__m256d _sum = _mm256_hadd_pd(_squared, _squared);
 	_sum = _mm256_permute4x64_pd(_sum, 0x88);
 	_sum = _mm256_hadd_pd(_sum, _sum);
-	__m256d _invRoot = _mm256_invsqrt_pd(_sum);
+	__m256d _root = _mm256_sqrt_pd(_sum);
+	__m256d _ones = _mm256_set_pd(1.0, 1.0, 1.0, 1.0);
+	__m256d _invRoot = _mm256_div_pd(_ones, _root);
 	_vec = _mm256_mul_pd(_vec, _invRoot);
 }
 
