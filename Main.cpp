@@ -4,7 +4,8 @@
 int main()
 {
 	ForwardEulerSolver Solver;
-	System SolarSystem(20, 0.01, &Solver);
+	RungeKuttaSolver Rk4Solver;
+	System SolarSystem(10, 0.01, &Rk4Solver);
 
 	SolarSystem.AddPLanet({ {}, {}, 1.9855e30, "Sun" });
 	SolarSystem.AddPLanet({ {57909175000.0, 0.0, 0.0}, {0.0, 47872.5}, 3.302e23, "Mercury" });
